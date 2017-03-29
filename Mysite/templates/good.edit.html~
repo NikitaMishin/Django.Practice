@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %} Edit :: {{good.name}}::{{good.category.name}}
+{% endblock %}
+{% block main %}
+  <form action="" method="post">
+  {% csrf_token %}
+  {{form_as_p }}
+  <input type = "submit" value="Save">
+  </form>

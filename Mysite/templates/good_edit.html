@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %} Edit :: {{good.name}}::{{good.category.name}}
+{% endblock %}
+{% block main %}
+  <form action="" method="post">
+  {% csrf_token %}
+  {{form.as_p }}
+  <input type = "submit" value="Save">
+  </form>
+  <p><a href ="{% url "index" good.category.id %}?page={{pn}}">Back</a></p>
+  {% endblock %}
+  

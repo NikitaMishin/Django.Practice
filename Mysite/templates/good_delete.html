@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %} Deletion:: {{ good.name}}::good.category.name {% endblock %}
+{% block main %}
+  <h2>{{good.name}}</h2>
+  <p class="category">Categorie:{{ good.category.name}}</p>
+  <p>{{good.description|linebreaksbr}}</p>
+  <p  class="not-in-stock" >{% if not good.in_stock %}Not! {% endif %}</p>
+  <form action="" method="post">
+  {% csrf_token %}
+  <input type="submit" value="Delete">
+  </form>
+  <p><a href ={% url "index" good.category.id %}?page={{pn}}> Back</a></p>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %} { { category.name } }  {% endblock %}  
+{% block main %}
+  <h2> {{category.name}}</h2>
+  <p><a href="{% url "good_add" category.id %}?page={{page_obj.number}}">Add item</a></p>
+  <table>
+   <tr>
+   <th>Name</th>
+   <th>Have?</th>
+   <th>&nbsp</th>
+   <th>&nbsp</th>
+   </tr>
+   {% for good in object_list %}
+   <tr>
+   <td><a href = "{% url "good" good_id=good.id %}?page={{page_obj.number}}"> {{good.name}}</a></td>
+   <td class="centered">{% if good.in_stock %}+ {% endif  %}</td>
+   <td class="centered"><a href="{% url "good_edit" good.id%}"?page={{page_obj.number}}>Edit</a></td>
+   <td class="centered"><a href="{% url "good_delete" good.id %}"?page={{page_obj.number}}>Delete</a></td>
+  </tr>
+  {% endfor %}
+  </table>
+ {% if paginator.num_pages > 1 %}
+  <div id="pagination">
+  
+  
+    {% if page_obj.has_previous %}
+  <div id="previous-page"><a href ="{% url "index" cat_id=category.pk %}?page={{ page_obj.previous_page_number }}">&lt;</a></div>
+ {% endif %}
+ {% if goods.has_next %}
+    <div id="next-page"><a href ="{% url "index" cat_id=category.pk %}?page={{ page_obj.next_page_number }}">&gt;</a></div>
+ {% endif %}
+ 
+ 
+ 
+    <div id="num-pages">
+    {% for pn in paginator.page_range %}
+    {% if not forloop.first %}
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    {% endif %}
+  
+    {% if page_obj.number != pn %}
+    <a href="{% url "index" cat_id=category.pk %}?page={{pn}}">
+    {% endif %}
+    {{pn}}
+    {% if page_obj.number != pn %}
+    </a>
+    {% endif %}
+    
+    {% endfor %}
+    </div>
+    </div>
+    {% endif %}
+ {% endblock %}
+  

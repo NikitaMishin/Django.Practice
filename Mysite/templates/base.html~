@@ -1,0 +1,32 @@
+{% load staticfiles %}
+<!doctype html>
+<html>
+ <head>
+   <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+   <link type = "text/css" href="{% static "main.css" %}" rel ="stylesheet">
+   <title>{% block title  %}{% endblock %}::All for cleanup</title>
+ </head>  
+  <body>
+  <div id ="header">
+   <h1>All for cleanup</h1>
+   </div>
+   
+   <div id = "leftmenu">
+   <ul>
+   {% for cat in cats %}
+   {% url "index" cat_id=cat.id as cat_url %}
+   <li><a href="{{ cat_url }}"> {{cat.name}}</a></li>
+   {% endfor %}
+   </ul>
+   </div>
+   <div id="main">
+   {% block main %}
+   {% endblock %}
+  </div>
+  <div id="footer">
+  <p>All rights reserved</p>
+  </div>
+
+  </body> 
+ </head>
+</html>

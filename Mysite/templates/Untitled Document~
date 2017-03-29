@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+ <head>
+   <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+   <title>{{category.name}}</title>
+  <body>
+   <h1>List of items</h1>
+   <h2>Categories<\h2>
+   <ul>
+   {% for cat in cats %}
+   <li><a href="/goods/{{cat.id}}/"> {{cat.name}}</a></li>
+   {% endor %}
+   <\ul>
+  <h2> Items</h2>
+  <table>
+   <tr>
+   <th>Name</th>
+   <th>Have?</th>
+   </tr>
+   {% for good in goods %}
+  
+   <tr>
+   <td><a href = "/goods/good/{{good.id}}/"> {{good.name}}</a></td>
+   <td>{% if good.in_stock %}+ {% endif  %}</td>
+  </tr>
+  {% endfor %}
+  </table>
+  </body> 
+ </head>
+</html>
