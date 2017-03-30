@@ -14,8 +14,8 @@
    <tr>
    <td><a href = "{% url "good" good_id=good.id %}?page={{page_obj.number}}"> {{good.name}}</a></td>
    <td class="centered">{% if good.in_stock %}+ {% endif  %}</td>
-   <td class="centered"><a href="{% url "good_edit" good.id%}"?page={{page_obj.number}}>Edit</a></td>
-   <td class="centered"><a href="{% url "good_delete" good.id %}"?page={{page_obj.number}}>Delete</a></td>
+   <td class="centered"><a href="{% url "good_edit" good_id=good.id %}"?page={{page_obj.number}}>Edit</a></td>
+   <td class="centered"><a href="{% url "good_delete" good_id=good.id %}"?page={{page_obj.number}}>Delete</a></td>
   </tr>
   {% endfor %}
   </table>

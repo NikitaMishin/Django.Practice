@@ -26,7 +26,7 @@
     {% if page_obj.has_previous %}
   <div id="previous-page"><a href ="{% url "index" cat_id=category.pk %}?page={{ page_obj.previous_page_number }}">&lt;</a></div>
  {% endif %}
- {% if goods.has_next %}
+ {% if page_obj.has_next %}
     <div id="next-page"><a href ="{% url "index" cat_id=category.pk %}?page={{ page_obj.next_page_number }}">&gt;</a></div>
  {% endif %}
  
